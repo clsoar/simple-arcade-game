@@ -1,3 +1,7 @@
+*Live Game for testing
+
+https://clsoar.github.io/simple-arcade-game/.
+
 frontend-nanodegree-arcade-game
 ===============================
 
