@@ -48,10 +48,10 @@ class Player {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
   handleInput(key) {
-    (key === 37) ? x -= 100:  //move player left
-    (key === 39) ? x += 100:  //move player right
-    (key === 38) ? y += 100:  //move player up
-    (key === 40) ? y -= 100: console.log("keys don't work"); //move player down
+    (key === "left") ? x -= 100:  //move player left
+    (key === "right") ? x += 100:  //move player right
+    (key === "up") ? y += 100:  //move player up
+    (key === "down") ? y -= 100: console.log("keys don't work"); //move player down
   }
 }
 
@@ -82,4 +82,5 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
+    console.log(allowedKeys[e.keyCode]);
 });
