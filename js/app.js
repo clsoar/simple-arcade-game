@@ -48,10 +48,10 @@ class Player {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
   handleInput(key) {
-    (key === "left") ? x -= 100:  //move player left
-    (key === "right") ? x += 100:  //move player right
-    (key === "up") ? y += 100:  //move player up
-    (key === "down") ? y -= 100: console.log("keys don't work"); //move player down
+    (key === "left") ? this.x -= 100:  //move player left
+    (key === "right") ? this.x += 100:  //move player right
+    (key === "up") ? this.y -= 83:  //move player up
+    (key === "down") ? this.y += 83: console.log("keys don't work"); //move player down
   }
 }
 
