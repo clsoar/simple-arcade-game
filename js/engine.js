@@ -89,13 +89,13 @@ var Engine = (function(global) {
      * the data/properties related to the object. Do your drawing in your
      * render methods.
      */
-  /* *****commented out for now *******
+
    function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
         player.update();
-    }*/
+    }
 
     /* This function initially draws the "game level", it will then call
      * the renderEntities function. Remember, this function is called every

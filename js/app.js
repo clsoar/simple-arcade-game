@@ -47,6 +47,12 @@ class Player {
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
+  handleInput(key) {
+    (key === 37) ? x -= 100:  //move player left
+    (key === 39) ? x += 100:  //move player right
+    (key === 38) ? y += 100:  //move player up
+    (key === 40) ? y -= 100: console.log("keys don't work"); //move player down
+  }
 }
 
 // Now instantiate your objects.
