@@ -36,13 +36,12 @@ class Enemy {
 // This class requires an update(), render() and
 // a handleInput() method.
 class Player {
-  constructor() {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
     this.sprite = 'images/char-horn-girl.png';
   }
-  initPos(x, y) {
-    let x = x;
-    let y = y;
-  }
+
   update(dt) {}
 
   render() {
@@ -54,7 +53,7 @@ class Player {
 const enemyOne = new Enemy(0, 62, 50);
 const enemyTwo = new Enemy(0, 145, 50);
 const enemyThree = new Enemy(-100, 228, 50);
-const player = new Player();
+const player = new Player(203, 405);
 
 // Place all enemy objects in an array called allEnemies
 let allEnemies = [
