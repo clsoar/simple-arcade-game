@@ -1,3 +1,4 @@
+var count = 1
 // Enemies our player must avoid
 class Enemy {
   constructor(x, y, speed){
@@ -18,12 +19,11 @@ class Enemy {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    if (this.x<506){
-    this.x += 5*this.speed*dt;
-    console.log(this.x);
+  /*  if (this.x<506){
+    this.x += this.speed*dt;
   } else {
     this.x = -100;
-  }
+  }*/
   }
   // Draw the enemy on the screen, required method for game
   render() {
@@ -48,44 +48,58 @@ class Player {
     //this.hit = false;
   }
 
-  update() {}
+  update() {
+    //check for collision
+    checkCollisions();
+  }
 
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
   handleInput(key) {
-    (key === "left") ? this.x -= 100:  //move player left
-    (key === "right") ? this.x += 100:  //move player right
+    (key === "left") ? this.x -= 101:  //move player left
+    (key === "right") ? this.x += 101:  //move player right
     (key === "up") ? this.y -= 83:  //move player up
     (key === "down") ? this.y += 83: false; //move player down
-    //loop through enemy objects' position
-    //check enemy positions against player position
-    //let hit;
+    //check for collision
     checkCollisions();
   }
 }
 
 // Now instantiate your objects.
-const enemyOneA = new Enemy(-100, 62, 30);
-const enemyOneB = new Enemy(-300, 62, 30)
-const enemyTwo = new Enemy(-100, 145, 20);
-const enemyThree = new Enemy(-100, 228, 10);
+const enemyOneA = new Enemy(100, 62, 150);//(-100, 62, 150);
+const enemyOneB = new Enemy(450, 62, 150);//(-400, 62, 150)
+const enemyTwoA = new Enemy(350, 145, 35);//(-100, 145, 35);
+const enemyTwoB = new Enemy(200, 145, 35);
+const enemyThreeA = new Enemy(167, 228, 90);//(-100, 228, 90);
+const enemyThreeB = new Enemy(384, 228, 90);//(-400, 228, 90);
 const player = new Player(203, 405);
 
 // Place all enemy objects in an array called allEnemies
 let allEnemies = [
-  enemyOne,
-  enemyTwo,
-  enemyThree
+  enemyOneA,
+  enemyOneB,
+  enemyTwoA,
+  enemyTwoB,
+  enemyThreeA,
+  enemyThreeB
 ];
 
-//check for collision
+//loop through enemy objects' position
+//check enemy positions against player position
 const checkCollisions = () => {
   for (enemy of allEnemies) {
-    let ls = player.x-50;
-    let rs = player.x+50;
-    let ts = player.y-41;
-    let bs = player.y+41;
+    let ls = player.x+18;
+    let rs = player.x+83;
+    let ts = player.y+10;
+    let bs = player.y+70;
+    //test
+    /*if (count === 1){
+      console.log("left"+ls+" right"+rs+" top"+ts+" bottom"+bs);
+      count+=1;
+      return count;
+    }*/
+    //end test
     if (enemy.x >= ls && enemy.x <= rs && enemy.y >= ts && enemy.y <= bs) {
       resetPlayer();
     }
