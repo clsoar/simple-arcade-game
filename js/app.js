@@ -42,7 +42,9 @@ class Player {
     this.sprite = 'images/char-horn-girl.png';
   }
 
-  update(dt) {}
+  update(dt) {
+
+  }
 
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -51,7 +53,12 @@ class Player {
     (key === "left") ? this.x -= 100:  //move player left
     (key === "right") ? this.x += 100:  //move player right
     (key === "up") ? this.y -= 83:  //move player up
-    (key === "down") ? this.y += 83: console.log("keys don't work"); //move player down
+    (key === "down") ? this.y += 83: false; //move player down
+    //loop through enemy objects' position
+    //check enemy positions against player position
+    //let hit;
+    checkCollisions();
+    console.log(hit);
   }
 }
 
@@ -67,9 +74,20 @@ let allEnemies = [
   enemyTwo,
   enemyThree
 ];
-// Place the player object in a variable called player
-const thePlayer = {};
 
+//check for collision
+const checkCollisions = () => {
+  let hit;
+  for (enemy of allEnemies) {
+    let ls = player.x-50;
+    let rs = player.x+50;
+    let ts = player.y-41;
+    let bs = player.y+41;
+    (enemy.x >= ls && enemy.x <= rs && enemy.y >= ts && enemy.y <= bs) ? hit = true : false;
+    return hit;
+  }
+  console.log("2");
+}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -82,5 +100,4 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
-    console.log(allowedKeys[e.keyCode]);
 });
