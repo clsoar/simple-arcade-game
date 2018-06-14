@@ -19,11 +19,11 @@ class Enemy {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-  /*  if (this.x<506){
+    if (this.x<506){
     this.x += this.speed*dt;
   } else {
     this.x = -100;
-  }*/
+  }
   }
   // Draw the enemy on the screen, required method for game
   render() {
@@ -67,12 +67,12 @@ class Player {
 }
 
 // Now instantiate your objects.
-const enemyOneA = new Enemy(100, 62, 150);//(-100, 62, 150);
-const enemyOneB = new Enemy(450, 62, 150);//(-400, 62, 150)
-const enemyTwoA = new Enemy(350, 145, 35);//(-100, 145, 35);
+const enemyOneA = new Enemy(-100, 62, 150);
+const enemyOneB = new Enemy(-400, 62, 150)
+const enemyTwoA = new Enemy(-100, 145, 35);
 const enemyTwoB = new Enemy(200, 145, 35);
-const enemyThreeA = new Enemy(167, 228, 90);//(-100, 228, 90);
-const enemyThreeB = new Enemy(384, 228, 90);//(-400, 228, 90);
+const enemyThreeA = new Enemy(-100, 228, 90);
+const enemyThreeB = new Enemy(-400, 228, 90);
 const player = new Player(203, 405);
 
 // Place all enemy objects in an array called allEnemies
@@ -91,16 +91,25 @@ const checkCollisions = () => {
   for (enemy of allEnemies) {
     let ls = player.x+18;
     let rs = player.x+83;
-    let ts = player.y+10;
-    let bs = player.y+70;
+    //let ts = player.y+15;
+    //let bs = player.y+75;
+    let bls = enemy.x+5;
+    let brs = enemy.x+90;
+    //let bts = enemy.y+32;
+    //let bbs = enemy.y+60;
+    let yAxis = enemy.y+11;
     //test
     /*if (count === 1){
       console.log("left"+ls+" right"+rs+" top"+ts+" bottom"+bs);
+      console.log("bug_l:"+bls+" bug_r:"+brs+" bug_t:"+bts+" bug_b:"+bbs);
       count+=1;
       return count;
     }*/
-    //end test
-    if (enemy.x >= ls && enemy.x <= rs && enemy.y >= ts && enemy.y <= bs) {
+    //end test (bbs > ts || bts < bs)
+    if (((brs>ls && bls<rs && brs<rs && bls<ls) ||
+      (brs>ls && bls<rs && brs>rs && bls<ls) ||
+      (brs>ls && bls<rs && brs>rs && bls>ls)) && player.y === yAxis) {
+      console.log("hit");
       resetPlayer();
     }
   }
