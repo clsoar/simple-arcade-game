@@ -18,7 +18,10 @@ class Enemy {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    //requestAnimationFrame????? to keep it close to the 60 sec speed?
+    while (x<506){
+    this.x += 5*this.speed*dt;
+    console.log(this.x);
+  }
   }
   // Draw the enemy on the screen, required method for game
   render() {
@@ -40,11 +43,10 @@ class Player {
     this.x = x;
     this.y = y;
     this.sprite = 'images/char-horn-girl.png';
+    //this.hit = false;
   }
 
-  update(dt) {
-
-  }
+  update() {}
 
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -58,7 +60,6 @@ class Player {
     //check enemy positions against player position
     //let hit;
     checkCollisions();
-    console.log(hit);
   }
 }
 
@@ -77,16 +78,19 @@ let allEnemies = [
 
 //check for collision
 const checkCollisions = () => {
-  let hit;
   for (enemy of allEnemies) {
     let ls = player.x-50;
     let rs = player.x+50;
     let ts = player.y-41;
     let bs = player.y+41;
-    (enemy.x >= ls && enemy.x <= rs && enemy.y >= ts && enemy.y <= bs) ? hit = true : false;
-    return hit;
+    if (enemy.x >= ls && enemy.x <= rs && enemy.y >= ts && enemy.y <= bs) {
+      resetPlayer();
+    }
   }
-  console.log("2");
+}
+const resetPlayer = () => {
+  player.x = 203;
+  player.y = 405;
 }
 
 // This listens for key presses and sends the keys to your
@@ -100,4 +104,5 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
+
 });
