@@ -63,6 +63,8 @@ class Player {
     (key === "down" && this.y < 404) ? this.y += 83: false; //move player down
     //check for collision
     checkCollisions();
+    //check for win
+    checkWin();
   }
 }
 
@@ -113,6 +115,13 @@ const checkCollisions = () => {
 const resetPlayer = () => {
   player.x = 203;
   player.y = 405;
+}
+const winner = () => {
+  alert("You are a Winner!!");
+  resetPlayer();
+}
+const checkWin = () => {
+  (player.y === -10) ? winner() : false;
 }
 
 // This listens for key presses and sends the keys to your
