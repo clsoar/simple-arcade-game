@@ -110,14 +110,19 @@ const checkCollisions = () => {
     }
   }
 }
+//resets player to starting position
 const resetPlayer = () => {
   player.x = 203;
   player.y = 405;
 }
+//Alerts user of win and resets player
 const winner = () => {
+  setTimeout(function() {
   alert("You are a Winner!!");
   resetPlayer();
+}, 300);
 }
+//checks if player makes it to the waterline
 const checkWin = () => {
   (player.y === -10) ? winner() : false;
 }
