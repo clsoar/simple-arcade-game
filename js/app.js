@@ -57,10 +57,10 @@ class Player {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
   handleInput(key) {
-    (key === "left") ? this.x -= 101:  //move player left
-    (key === "right") ? this.x += 101:  //move player right
-    (key === "up") ? this.y -= 83:  //move player up
-    (key === "down") ? this.y += 83: false; //move player down
+    (key === "left" && this.x > 100) ? this.x -= 101:  //move player left
+    (key === "right" && this.x < 405) ? this.x += 101:  //move player right
+    (key === "up" && this.y > 0) ? this.y -= 83:  //move player up
+    (key === "down" && this.y < 404) ? this.y += 83: false; //move player down
     //check for collision
     checkCollisions();
   }
