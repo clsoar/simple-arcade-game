@@ -89,23 +89,19 @@ let allEnemies = [
 //check enemy positions against player position
 const checkCollisions = () => {
   for (enemy of allEnemies) {
+    //set player and enemy sides
+    //ls & rs are player sides
+    //bls and brs are bug or enemy sides
     let ls = player.x+18;
     let rs = player.x+83;
-    //let ts = player.y+15;
-    //let bs = player.y+75;
     let bls = enemy.x+5;
     let brs = enemy.x+90;
-    //let bts = enemy.y+32;
-    //let bbs = enemy.y+60;
+    //sets enemy y value to be even with player y value
+    //this takes care of the difference in sizes of
+    //the image versus the actualcharacter height
     let yAxis = enemy.y+11;
-    //test
-    /*if (count === 1){
-      console.log("left"+ls+" right"+rs+" top"+ts+" bottom"+bs);
-      console.log("bug_l:"+bls+" bug_r:"+brs+" bug_t:"+bts+" bug_b:"+bbs);
-      count+=1;
-      return count;
-    }*/
-    //end test (bbs > ts || bts < bs)
+    //this checks for the collisions based on whether
+    //the sides overlap while on the same line
     if (((brs>ls && bls<rs && brs<rs && bls<ls) ||
       (brs>ls && bls<rs && brs>rs && bls<ls) ||
       (brs>ls && bls<rs && brs>rs && bls>ls)) && player.y === yAxis) {
