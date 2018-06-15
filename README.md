@@ -1,10 +1,35 @@
-*Live Game for testing
+# Simple Arcade Game
+================================
+A frogger-like arcade game in javascript.
 
-https://clsoar.github.io/simple-arcade-game/.
+## Getting Started
+================================
+Find the game at the following link to play:
+https://clsoar.github.io/simple-arcade-game/
 
-frontend-nanodegree-arcade-game
+Alternatively, download the files and folders contained in this GitHub Repo and run locally from your computer. 
+
+To run locally from your computer, open the index.html file in your browser.
+
+## Game Play
+================================
+Dodge the bugs and make it safely to the water without touching the bugs.
+
+### Controls
 ===============================
+Use arrow keys to move.
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+* Left arrow moves player one block left.
+* Right arrow moves player one block right.
+* Up arrow moves player one block up.
+* Down arrow moves player one block down.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+### Rules
+==============================
+* Do not run into the bugs, doing so will reset the player to the start.
+* Cross to the water.
+* You can move backwards if needed.
+
+## Credits
+===============================
+* Udacity Front-End starter code was used for HTML, CSS, engine.js, resources.js, and images.

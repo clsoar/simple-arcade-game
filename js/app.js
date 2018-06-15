@@ -1,4 +1,3 @@
-var count = 1
 // Enemies our player must avoid
 class Enemy {
   constructor(x, y, speed){
@@ -107,7 +106,6 @@ const checkCollisions = () => {
     if (((brs>ls && bls<rs && brs<rs && bls<ls) ||
       (brs>ls && bls<rs && brs>rs && bls<ls) ||
       (brs>ls && bls<rs && brs>rs && bls>ls)) && player.y === yAxis) {
-      console.log("hit");
       resetPlayer();
     }
   }
